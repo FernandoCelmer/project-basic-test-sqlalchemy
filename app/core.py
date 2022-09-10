@@ -2,7 +2,7 @@ from time import sleep
 from app.database import SessionLocal
 
 
-def make_post(model, data: dict, retry: int = 0, max_retry: int = 5):
+def make_post(model, data: dict, retry: int = 0, max_retry: int = 5) -> dict:
     db_item = model(**data)
 
     with SessionLocal() as session:
