@@ -1,11 +1,16 @@
 from time import sleep
 from app.database import SessionLocal
+from sqlalchemy.orm import Session
 
 
-def make_post(model, data: dict, retry: int = 0, max_retry: int = 5) -> dict:
+def make_post(model,
+              data: dict,
+              retry: int = 0,
+              max_retry: int = 5,
+              db: Session = SessionLocal) -> dict:
     db_item = model(**data)
 
-    with SessionLocal() as session:
+    with db() as session:
         session.begin()
         try:
             session.add(db_item)
