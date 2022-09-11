@@ -12,7 +12,7 @@ class RunScript(BaseCommand):
     def run(self):
         tic = perf_counter()
 
-        for item in range(1):
+        for item in range(10):
             data = {
                 "name": uuid4().hex.upper(),
                 "status": choice([True, False])

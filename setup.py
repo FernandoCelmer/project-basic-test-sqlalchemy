@@ -1,5 +1,5 @@
 from setuptools import setup
-from service.main import RunScript
+from script.main import RunScript
 
 
 setup(
