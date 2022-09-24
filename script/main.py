@@ -57,6 +57,30 @@ class RunSqlalchemyOrmBulkInsert(BaseCommand):
         print(f"SQLAlchemy ORM bulk_save_objects(): Total {toc - tic:0.4f} seconds")
 
 
+class RunSqlalchemyOrmAddAll(BaseCommand):
+    """python setup.py run_sqlalchemy_orm_add_all --param 99999
+    """
+
+    def run(self):
+        tic = perf_counter()
+
+        total = int(self.param)
+        with self.db() as session:
+            session.begin()
+            objects = [
+                Item(
+                    name=uuid4().hex.upper(),
+                    status=choice([True, False])
+                )
+                for item in range(total)
+            ]
+            session.add_all(objects)
+            session.commit()
+
+        toc = perf_counter()
+        print(f"SQLAlchemy ORM add_all(): Total {toc - tic:0.4f} seconds")
+
+
 class RunSqlalchemyCore(BaseCommand):
     """python setup.py run_sqlalchemy_core --param 99999
     """
