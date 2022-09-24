@@ -2,23 +2,81 @@ from uuid import uuid4
 from time import perf_counter
 from random import choice
 
-from app.core import make_post
 from app.command import BaseCommand
 from app.models import Item
 
 
-class RunScript(BaseCommand):
+class RunSqlalchemyOrm(BaseCommand):
+    """python setup.py run_sqlalchemy_orm --param 99999
+    """
 
     def run(self):
         tic = perf_counter()
 
-        for item in range(10):
-            data = {
-                "name": uuid4().hex.upper(),
-                "status": choice([True, False])
-            }
-            result = make_post(model=Item, data=data)
-            print(result)
+        total = int(self.param)
+        with self.db() as session:
+            session.begin()
+            for item in range(total):
+                data = {
+                    "name": uuid4().hex.upper(),
+                    "status": choice([True, False])
+                }
+                db_item = Item(**data)
+                session.add(db_item)
+
+            session.flush()
+            session.commit()
+      
+        toc = perf_counter()
+        print(f"SQLAlchemy ORM: Total {toc - tic:0.4f} seconds")
+
+
+class RunSqlalchemyOrmBulkInsert(BaseCommand):
+    """python setup.py run_sqlalchemy_orm_bulk_insert --param 99999
+    """
+
+    def run(self):
+        tic = perf_counter()
+
+        total = int(self.param)
+        with self.db() as session:
+            session.begin()
+            session.bulk_insert_mappings(
+                Item,
+                [
+                    dict(
+                        name=uuid4().hex.upper(),
+                        status=choice([True, False])
+                    )
+                    for item in range(total)
+                ]
+            )
+            session.commit()
 
         toc = perf_counter()
-        print(f"Time: {toc - tic:0.4f} seconds")
+        print(f"SQLAlchemy ORM bulk_save_objects(): Total {toc - tic:0.4f} seconds")
+
+
+class RunSqlalchemyCore(BaseCommand):
+    """python setup.py run_sqlalchemy_core --param 99999
+    """
+
+    def run(self):
+        tic = perf_counter()
+
+        total = int(self.param)
+        with self.db() as session:
+            session.begin()
+            session.execute(
+                Item.__table__.insert(),
+                [
+                    {
+                        "name": uuid4().hex.upper(),
+                        'status': choice([True, False])
+                    } 
+                        for item in range(total)
+                ]
+            )
+
+        toc = perf_counter()
+        print(f"SQLAlchemy Core: Total {toc - tic:0.4f} seconds")
