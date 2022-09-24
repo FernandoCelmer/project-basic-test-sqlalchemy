@@ -33,14 +33,16 @@ pip install -r requirements.txt
 
 ## Running
 
-| Option                                | Command                                                           |
-| :-----------------------------------: | :---------------------------------------------------------------: |
+| Option                              | Command                                                           |
+| :---------------------------------: | :---------------------------------------------------------------: |
 | SQLAlchemy ORM	                    | `python setup.py run_sqlalchemy_orm --param 99999`                |
+| SQLAlchemy ORM add_all()	          | `python setup.py run_sqlalchemy_orm_add_all --param 99999`        |
 | SQLAlchemy ORM bulk_save_objects()	| `python setup.py run_sqlalchemy_orm_bulk_insert --param 99999`    |
 | SQLAlchemy Core	                    | `python setup.py run_sqlalchemy_core --param 99999`               |
 
 ## Test
 
 - SQLAlchemy ORM: Total 5.3358 seconds
+- SQLAlchemy ORM add_all(): Total 4.8070 seconds
 - SQLAlchemy ORM bulk_save_objects(): Total 0.7364 seconds
 - SQLAlchemy Core: Total 0.5063 seconds
