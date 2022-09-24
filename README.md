@@ -54,16 +54,49 @@ pip install -r requirements.txt
 - **SQLAlchemy ORM bulk_save_objects(): Total 5.8701 seconds**
 - SQLAlchemy Core: Total 11.2585 seconds
 
-## Test - Mysql = 100000 inserts * 10xThreads
+## Test - Mysql (1000:Inserts) * (10:Threads)
+
+<details>
+  <summary>SQLAlchemy ORM</summary>
+
+</details>
+
+<details>
+  <summary>SQLAlchemy ORM add_all()</summary>
+
+  
+</details>
+  
+<details>
+  <summary>SQLAlchemy ORM bulk_save_objects()</summary>
 
     running run_sql_orm_bulk_insert
-    SQLAlchemy ORM bulk_save_objects(): Total 17.5451 seconds
-    SQLAlchemy ORM bulk_save_objects(): Total 17.5506 seconds
-    SQLAlchemy ORM bulk_save_objects(): Total 18.0528 seconds
-    SQLAlchemy ORM bulk_save_objects(): Total 18.9327 seconds
-    SQLAlchemy ORM bulk_save_objects(): Total 19.2549 seconds
-    SQLAlchemy ORM bulk_save_objects(): Total 19.8905 seconds
-    SQLAlchemy ORM bulk_save_objects(): Total 20.0640 seconds
-    SQLAlchemy ORM bulk_save_objects(): Total 20.9795 seconds
-    SQLAlchemy ORM bulk_save_objects(): Total 20.9806 seconds
-    SQLAlchemy ORM bulk_save_objects(): Total 21.1372 seconds
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:00.853800]
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:01.749000]
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:01.771200]
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:01.773400]
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:01.776300]
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:01.945100]
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:01.912700]
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:01.929000]
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:02.022500]
+    SQLAlchemy ORM bulk_save_objects(): Total [0:00:02.732800]
+
+</details>
+  
+<details>
+  <summary>SQLAlchemy Core</summary>
+
+    running run_sql_core
+    SQLAlchemy Core: Total [0:00:00.791400]
+    SQLAlchemy Core: Total [0:00:01.689200]
+    SQLAlchemy Core: Total [0:00:01.733400]
+    SQLAlchemy Core: Total [0:00:01.730500]
+    SQLAlchemy Core: Total [0:00:01.688000]
+    SQLAlchemy Core: Total [0:00:01.728900]
+    SQLAlchemy Core: Total [0:00:01.718400]
+    SQLAlchemy Core: Total [0:00:01.691300]
+    SQLAlchemy Core: Total [0:00:01.713200]
+    SQLAlchemy Core: Total [0:00:01.835200]
+
+</details>
