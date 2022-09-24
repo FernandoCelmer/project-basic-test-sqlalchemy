@@ -7,32 +7,33 @@ from app.models import Item
 
 
 class RunSqlalchemyOrm(BaseCommand):
-    """python setup.py run_sqlalchemy_orm --param 99999
+    """python setup.py run_sql_orm --param 99999
     """
 
     def run(self):
         tic = perf_counter()
-
         total = int(self.param)
-        with self.db() as session:
-            session.begin()
-            for item in range(total):
+
+        def create():
+            with self.db() as session:
+                session.begin()
                 data = {
-                    "name": uuid4().hex.upper(),
-                    "status": choice([True, False])
-                }
+                        "name": uuid4().hex.upper(),
+                        "status": choice([True, False])
+                    }
                 db_item = Item(**data)
                 session.add(db_item)
+                session.commit()
 
-            session.flush()
-            session.commit()
+        for item in range(total):
+            create()
       
         toc = perf_counter()
         print(f"SQLAlchemy ORM: Total {toc - tic:0.4f} seconds")
 
 
 class RunSqlalchemyOrmBulkInsert(BaseCommand):
-    """python setup.py run_sqlalchemy_orm_bulk_insert --param 99999
+    """python setup.py run_sql_orm_bulk_insert --param 99999
     """
 
     def run(self):
@@ -58,7 +59,7 @@ class RunSqlalchemyOrmBulkInsert(BaseCommand):
 
 
 class RunSqlalchemyOrmAddAll(BaseCommand):
-    """python setup.py run_sqlalchemy_orm_add_all --param 99999
+    """python setup.py run_sql_orm_add_all --param 99999
     """
 
     def run(self):
@@ -82,7 +83,7 @@ class RunSqlalchemyOrmAddAll(BaseCommand):
 
 
 class RunSqlalchemyCore(BaseCommand):
-    """python setup.py run_sqlalchemy_core --param 99999
+    """python setup.py run_sql_core --param 99999
     """
 
     def run(self):
@@ -101,6 +102,7 @@ class RunSqlalchemyCore(BaseCommand):
                         for item in range(total)
                 ]
             )
+            session.commit()
 
         toc = perf_counter()
         print(f"SQLAlchemy Core: Total {toc - tic:0.4f} seconds")
