@@ -33,12 +33,12 @@ pip install -r requirements.txt
 
 ## Running
 
-| Option                              | Command                                                           |
-| :---------------------------------: | :---------------------------------------------------------------: |
-| SQLAlchemy ORM	                    | `python setup.py run_sql_orm --param 99999`                |
-| SQLAlchemy ORM add_all()	          | `python setup.py run_sql_orm_add_all --param 99999`        |
-| SQLAlchemy ORM bulk_save_objects()	| `python setup.py run_sql_orm_bulk_insert --param 99999`    |
-| SQLAlchemy Core	                    | `python setup.py run_sql_core --param 99999`               |
+| Option                              | Command                                                            |
+| :---------------------------------: | :----------------------------------------------------------------: |
+| SQLAlchemy ORM	                    | `python setup.py run_sql_orm --value 1 --thread 10`                |
+| SQLAlchemy ORM add_all()	          | `python setup.py run_sql_orm_add_all --value 1 --thread 10`        |
+| SQLAlchemy ORM bulk_save_objects()	| `python setup.py run_sql_orm_bulk_insert --value 1 --thread 10`    |
+| SQLAlchemy Core	                    | `python setup.py run_sql_core --value 1 --thread 10`               |
 
 ## Test - SQLite
 
