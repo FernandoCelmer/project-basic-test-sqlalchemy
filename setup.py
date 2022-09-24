@@ -9,9 +9,9 @@ from script.main import (
 
 setup(
     cmdclass={
-        'run_sqlalchemy_orm': RunSqlalchemyOrm,
-        'run_sqlalchemy_orm_bulk_insert': RunSqlalchemyOrmBulkInsert,
-        'run_sqlalchemy_orm_add_all' :RunSqlalchemyOrmAddAll,
-        'run_sqlalchemy_core': RunSqlalchemyCore
+        'run_sql_orm': RunSqlalchemyOrm,
+        'run_sql_orm_bulk_insert': RunSqlalchemyOrmBulkInsert,
+        'run_sql_orm_add_all' :RunSqlalchemyOrmAddAll,
+        'run_sql_core': RunSqlalchemyCore
     }
 )
