@@ -51,3 +51,5 @@ pip install -r requirements.txt
 
 - SQLAlchemy Core: Total 11.2585 seconds
 - SQLAlchemy ORM bulk_save_objects(): Total 5.8701 seconds
+- SQLAlchemy ORM: --
+- SQLAlchemy ORM add_all(): --
