@@ -1,4 +1,5 @@
 from setuptools import Command
+from app.database import SessionLocal
 
 class BaseCommand(Command):
 
@@ -9,7 +10,7 @@ class BaseCommand(Command):
         self.param = None
 
     def finalize_options(self):
-        pass
+        self.db = SessionLocal
 
     def run(self):
         pass
