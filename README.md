@@ -45,12 +45,12 @@ pip install -r requirements.txt
 - SQLAlchemy ORM: Total 5.3358 seconds
 - SQLAlchemy ORM add_all(): Total 4.8070 seconds
 - SQLAlchemy ORM bulk_save_objects(): Total 0.7364 seconds
-- SQLAlchemy Core: Total 0.5063 seconds
+- **SQLAlchemy Core: Total 0.5063 seconds**
 
 ## Test - MySQL
 
 - SQLAlchemy ORM: --
 - SQLAlchemy ORM add_all(): --
-- SQLAlchemy ORM bulk_save_objects(): Total 5.8701 seconds
+- **SQLAlchemy ORM bulk_save_objects(): Total 5.8701 seconds**
 - SQLAlchemy Core: Total 11.2585 seconds
 
