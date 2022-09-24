@@ -40,9 +40,14 @@ pip install -r requirements.txt
 | SQLAlchemy ORM bulk_save_objects()	| `python setup.py run_sql_orm_bulk_insert --param 99999`    |
 | SQLAlchemy Core	                    | `python setup.py run_sql_core --param 99999`               |
 
-## Test
+## Test - SQLite
 
 - SQLAlchemy ORM: Total 5.3358 seconds
 - SQLAlchemy ORM add_all(): Total 4.8070 seconds
 - SQLAlchemy ORM bulk_save_objects(): Total 0.7364 seconds
 - SQLAlchemy Core: Total 0.5063 seconds
+
+## Test - MySQL
+
+- SQLAlchemy Core: Total 11.2585 seconds
+- SQLAlchemy ORM bulk_save_objects(): Total 5.8701 seconds
