@@ -12,8 +12,11 @@ This repository contains a basic Python project for performing database operatio
 - [SQLAlchemy](https://www.sqlalchemy.org/)
 
 # Instructions
-## Running the Local Project with [PIP]
 
+<details>
+  <summary>Installing Local Project with [PIP]</summary>
+  <br>
+  
  - Create a new Python virtual environment
 ```bash
 virtualenv -p python3.9 venv
@@ -26,7 +29,18 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
- - Run the application
-```
-python setup.py run_script
-```
+</details>
+
+## Running
+
+| Option                                | Command                                                           |
+| :-----------------------------------: | :---------------------------------------------------------------: |
+| SQLAlchemy ORM	                    | `python setup.py run_sqlalchemy_orm --param 99999`                |
+| SQLAlchemy ORM bulk_save_objects()	| `python setup.py run_sqlalchemy_orm_bulk_insert --param 99999`    |
+| SQLAlchemy Core	                    | `python setup.py run_sqlalchemy_core --param 99999`               |
+
+## Test
+
+- SQLAlchemy ORM: Total 5.3358 seconds
+- SQLAlchemy ORM bulk_save_objects(): Total 0.7364 seconds
+- SQLAlchemy Core: Total 0.5063 seconds
