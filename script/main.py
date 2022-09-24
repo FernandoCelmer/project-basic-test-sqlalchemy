@@ -1,20 +1,30 @@
+import datetime
 from uuid import uuid4
 from time import perf_counter
 from random import choice
 
+from app.core import run_thread
 from app.command import BaseCommand
 from app.models import Item
 
 
 class RunSqlalchemyOrm(BaseCommand):
-    """python setup.py run_sql_orm --param 99999
+    """python setup.py run_sql_orm --value 1 --thread 10
     """
 
     def run(self):
-        tic = perf_counter()
-        total = int(self.param)
+        run_thread(
+            task=self.create,
+            thread=self.thread,
+            value=self.value
+        )
 
-        def create():
+
+    def create(self, value):
+        tic = perf_counter()
+
+        total = value
+        def _create():
             with self.db() as session:
                 session.begin()
                 data = {
@@ -26,20 +36,28 @@ class RunSqlalchemyOrm(BaseCommand):
                 session.commit()
 
         for item in range(total):
-            create()
+            _create()
       
         toc = perf_counter()
-        print(f"SQLAlchemy ORM: Total {toc - tic:0.4f} seconds")
+        time_result = float(f'{toc - tic:0.4f}')
+        print(f"SQLAlchemy ORM: Total [{datetime.timedelta(seconds=time_result):0.4f}]")
 
 
 class RunSqlalchemyOrmBulkInsert(BaseCommand):
-    """python setup.py run_sql_orm_bulk_insert --param 99999
+    """python setup.py run_sql_orm_bulk_insert --value 1 --thread 10
     """
 
     def run(self):
+        run_thread(
+            task=self.create,
+            thread=self.thread,
+            value=self.value
+        )
+
+    def create(self, value):
         tic = perf_counter()
 
-        total = int(self.param)
+        total = value
         with self.db() as session:
             session.begin()
             session.bulk_insert_mappings(
@@ -53,19 +71,26 @@ class RunSqlalchemyOrmBulkInsert(BaseCommand):
                 ]
             )
             session.commit()
-
-        toc = perf_counter()
-        print(f"SQLAlchemy ORM bulk_save_objects(): Total {toc - tic:0.4f} seconds")
+            toc = perf_counter()
+            time_result = float(f'{toc - tic:0.4f}')
+            print(f"SQLAlchemy ORM bulk_save_objects(): Total [{datetime.timedelta(seconds=time_result)}]")
 
 
 class RunSqlalchemyOrmAddAll(BaseCommand):
-    """python setup.py run_sql_orm_add_all --param 99999
+    """python setup.py run_sql_orm_add_all --value 1 --thread 10
     """
 
     def run(self):
+        run_thread(
+            task=self.create,
+            thread=self.thread,
+            value=self.value
+        )
+
+    def create(self, value):
         tic = perf_counter()
 
-        total = int(self.param)
+        total = value
         with self.db() as session:
             session.begin()
             objects = [
@@ -79,17 +104,25 @@ class RunSqlalchemyOrmAddAll(BaseCommand):
             session.commit()
 
         toc = perf_counter()
-        print(f"SQLAlchemy ORM add_all(): Total {toc - tic:0.4f} seconds")
+        time_result = float(f'{toc - tic:0.4f}')
+        print(f"SQLAlchemy ORM add_all(): Total [{datetime.timedelta(seconds=time_result)}]")
 
 
 class RunSqlalchemyCore(BaseCommand):
-    """python setup.py run_sql_core --param 99999
+    """python setup.py run_sql_core --value 1 --thread 10
     """
 
     def run(self):
+        run_thread(
+            task=self.create,
+            thread=self.thread,
+            value=self.value
+        )
+
+    def create(self, value):
         tic = perf_counter()
 
-        total = int(self.param)
+        total = value
         with self.db() as session:
             session.begin()
             session.execute(
@@ -105,4 +138,5 @@ class RunSqlalchemyCore(BaseCommand):
             session.commit()
 
         toc = perf_counter()
-        print(f"SQLAlchemy Core: Total {toc - tic:0.4f} seconds")
+        time_result = float(f'{toc - tic:0.4f}')
+        print(f"SQLAlchemy Core: Total [{datetime.timedelta(seconds=time_result)}]")
