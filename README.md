@@ -35,10 +35,10 @@ pip install -r requirements.txt
 
 | Option                              | Command                                                           |
 | :---------------------------------: | :---------------------------------------------------------------: |
-| SQLAlchemy ORM	                    | `python setup.py run_sqlalchemy_orm --param 99999`                |
-| SQLAlchemy ORM add_all()	          | `python setup.py run_sqlalchemy_orm_add_all --param 99999`        |
-| SQLAlchemy ORM bulk_save_objects()	| `python setup.py run_sqlalchemy_orm_bulk_insert --param 99999`    |
-| SQLAlchemy Core	                    | `python setup.py run_sqlalchemy_core --param 99999`               |
+| SQLAlchemy ORM	                    | `python setup.py run_sql_orm --param 99999`                |
+| SQLAlchemy ORM add_all()	          | `python setup.py run_sql_orm_add_all --param 99999`        |
+| SQLAlchemy ORM bulk_save_objects()	| `python setup.py run_sql_orm_bulk_insert --param 99999`    |
+| SQLAlchemy Core	                    | `python setup.py run_sql_core --param 99999`               |
 
 ## Test
 
