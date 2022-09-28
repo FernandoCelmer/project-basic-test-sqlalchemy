@@ -1,8 +1,9 @@
 # [project-basic-test-sqlalchemy]
-<img src="https://www.sqlalchemy.org/img/sqla_logo.png">
 
 ![GitHub followers](https://img.shields.io/github/followers/FernandoCelmer?label=FernandoCelmer&style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/FernandoCelmer/project-basic-test-sqlalchemy?style=for-the-badge)
+
+<img src="https://www.sqlalchemy.org/img/sqla_logo.png">
 
 ## ✔️ About
 This repository contains a basic Python project for performing database operations using the SQLAlchemy ORM.
